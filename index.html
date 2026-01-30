@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Karthik V | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>.social-icons {
+  align-items: center;
+}
+
+.social-link {
+  font-size: 28px;
+  color: #000;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+  color: #0d6efd; /* Bootstrap primary */
+}
+
+.social-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.social-link:hover .social-img {
+  transform: scale(1.2);
+}
+</style>
+</head>
+<body>
+    <!-- PARTICLES -->
+    <div id="particles-js"></div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <img src="assets/profile.png" alt="Karthik" loading="lazy">
+        <a href="#home"><i class="bi bi-house"></i><span>Home</span></a>
+        <a href="#about"><i class="bi bi-person"></i><span>About</span></a>
+        <a href="projects.html"><i class="bi bi-briefcase"></i><span>Projects</span></a>
+        <a href="#skills"><i class="bi bi-award"></i><span>Skills</span></a>
+        <a href="#contact"><i class="bi bi-envelope"></i><span>Contact</span></a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hey 👋 I'm <span>Karthik V</span></h1>
+            <p id="typing"></p>
+            <a href="https://linkedin.com" class="btn primary">View LinkedIn <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="profile">
+            <img src="assets/profile.png" alt="Profile" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section-dark" id="about">
+        <div class="container">
+            <div class="about-advanced glass-box">
+                <img src="assets/profile.png" alt="Karthik" loading="lazy">
+                <div>
+                    <h3>ABOUT ME</h3>
+                    <h1> <span>Pre Final Year Student</span></h1>
+                    <p>Passionate Artificial Intelligence And Data Science Student with a strong interest in Full Stack Web Development and Artificial Intelligence. I enjoy developing responsive, user-friendly web applications and working on intelligent systems using modern technologies.
+
+I have hands-on experience with frontend and backend frameworks, databases, and multiple programming languages. I am passionate about problem-solving, continuous learning, and applying theoretical concepts to real-world projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="certifications">
+                <div class="cert-left">
+                    <h1>Certifications<br><span>Unlocked</span></h1>
+                </div>
+                <div>
+                    <div class="cert-card" data-aos="fade-up">
+                        <div class="cert-number">01</div>
+                        <h3>Java SpringBoot</h3>
+                        <p>I’ve successfully completed a 6-day Value-Added Course on Spring Boot - Java Framework conducted by PAGO Achievers, Chennai, in association with the Department of AI & Data Science at Kamaraj College of Engineering & Technology.
+
+This course deepened my understanding of building back-end applications using Spring Boot, one of the most powerful Java frameworks in the industry today.</p>
+                        <a href="#" class="btn secondary">Certificate</a>
+                    </div>
+                    <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="cert-number">02</div>
+                        <h3>Generative AI And Its Applications </h3>
+                        <p>I have successfully completed the Six-Day Value Added Course on Generative Al and its Applications conducted by Thiran360Al, Bangalore from 14th July 2025 to 19th July 2025. </p>
+                        <a href="#" class="btn secondary">Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section light" id="skills">
+        <div class="container">
+            <h2 class="section-title">Tech Stack</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card" data-skill="90">
+                    <h3>Programming</h3>
+                    <div class="skill-tags">Java • Python • C</div>
+                </div>
+                <div class="skill-card" data-skill="90">
+                    <h3>Full Stack</h3>
+                    <div class="skill-tags">Django • React • Node.js</div>
+                </div>
+                <div class="skill-card" data-skill="85">
+                    <h3>AI/ML & DL</h3>
+                    <div class="skill-tags">TensorFlow • PyTorch • CNN </div>
+                </div>
+                <div class="skill-card" data-skill="88">
+                    <h3>Mobile</h3>
+                    <div class="skill-tags">Flutter • Firebase • Dart</div>
+                </div>
+
+                <div class="skill-card" data-skill="80">
+                    <h3>Tools & Practices</h3>
+                    <div class="skill-tags">GitHub • Responsive Design • Andriod Studio • Visual Studio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section-dark" id="contact">
+        <div class="container">
+            <div class="contact-grid glass-box">
+                <div>
+                    <h1>Let's <span>Connect</span></h1>
+<form class="contact-form" id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <input type="tel" name="phone" placeholder="Phone (Optional)">
+    <textarea name="message" placeholder="Your Message..." rows="5" required></textarea>
+    <button type="submit" class="btn primary">Send Message</button>
+</form>
+
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="bi bi-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>karthik2006tech@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Virudhunagar, TamilNadu</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="bi bi-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 6382416959</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL -->
+    <div class="social-right">
+        <a href="https://github.com/karthiktech2006" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/karthik-v-a53b812a3/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.instagram.com/gowthamkarthik_35/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        
+      <a href="https://leetcode.com/u/Karthik2006tech/" target="_blank" class="social-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+         alt="LeetCode" class="social-img">
+
+  </a>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/gowthamkarthik_35/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/karthik-v-a53b812a3/"><i class="bi bi-linkedin"></i></a>
+             <a href="https://leetcode.com/u/Karthik2006tech/" target="_blank" class="social-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+         alt="LeetCode" class="social-img">
+            <a href="https://github.com/karthiktech2006"><i class="bi bi-github"></i></a>
+            
+            
+     
+        </div>
+
+        <p>&copy; 2026 Karthik V | Built with ❤️ & Code</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("hpgNqavQJWTmaPRlM");
+  })();
+  
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
