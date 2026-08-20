@@ -62,6 +62,22 @@
     <script>
         // Projects Data Array with Images and Tech Tags
         const projects = [
+             {
+                title: "KCET AI Chatbot",
+                desc: "An AI-powered admissions and information chatbot developed for Kamaraj College of Engineering & Technology (KCET). It helps students quickly access college information, including admissions, placements, infrastructure, contact details, and callback support through an interactive and user-friendly chat experience.",
+                tags: ["Python","Django","HTML5","CSS3","JavaScript","Responsive Design"], 
+                image: "assets/kcet_chatbot_preview.jpg",
+                github: "https://github.com/karthiktech2006/AI-Chatbot---Kamaraj-College-of-Engineering-and-Technology",
+                live: "https://kamarajengg.edu.in/",
+            },
+             {
+                title: "Professional Photographer Website",
+                desc: "A premium photography showcase tailored for editorial storytelling, romanced-infused wedding portfolios, fluid scroll effects, high-res image grid layouts, and active intake forms.",
+                tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Render Clouod"],
+                image: "assets/photography_preview.jpg",
+                github: "https://github.com/karthiktech2006/photography-website",
+                live: "https://guru-creative.onrender.com/"
+            },
             {
                 title: "Premium Portfolio Website",
                 desc: "A fully responsive personal portfolio designed with sleek slate-indigo aesthetics, rotating profile accents, slide-out mobile drawer menus, and dynamic particles effects.",
@@ -71,6 +87,14 @@
                 live: "https://karthik-v-portfolio.onrender.com/"
             },
             {
+            title: "AI-Based Hand Gesture Controlled Anime Puzzle Game",
+            desc: "An interactive AI-powered puzzle game that uses real-time hand gesture recognition to control gameplay without traditional keyboard or mouse input. Built using computer vision, the system detects and tracks hand movements to create an engaging touch-free gaming experience.",
+            tags: ["Python","OpenCV","MediaPipe","Computer Vision","Hand Gesture Recognition","AI","Game Development"],
+            image: "assets/anime_game_preview.jpg",
+            github: "https://github.com/karthiktech2006/AI-Based-Hand-Gesture-Controlled-Anime-Puzzle-Game",
+            live: "#",
+            },
+            {
                 title: "E-Commerce Shopping Web App",
                 desc: "A comprehensive shopping platform centered on kids clothing. Equipped with core login authentication flows, product grid rendering, shopping cart updates, and dashboard analytics.",
                 tags: ["React.js", "Node.js", "Express", "PostgreSQL", "CSS Modules"],
@@ -78,30 +102,17 @@
                 github: "https://github.com/karthiktech2006/Kids-Shoping-ecom",
                 live: "#"
             },
+            
             {
                 title: "ML Crop Prediction System",
                 desc: "An intelligent smart agricultural model that assesses tabular soil and weather conditions to suggest optimal crop variants. Leverages Python, scikit-learn models, and Django admin layers.",
-                tags: ["Python", "Django", "Machine Learning", "Scikit-Learn", "NumPy"],
+                tags: ["Python", "Machine Learning", "NumPy"],
                 image: "assets/ml_preview.jpg",
                 github: "https://github.com/karthiktech2006/Crop-Prediction",
                 live: "#"
-            },
-            {
-                title: "Professional Photographer Website",
-                desc: "A premium photography showcase tailored for editorial storytelling, romanced-infused wedding portfolios, fluid scroll effects, high-res image grid layouts, and active intake forms.",
-                tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design", "Render Clouod"],
-                image: "assets/photography_preview.jpg",
-                github: "https://github.com/karthiktech2006/photography-website",
-                live: "https://guru-creative.onrender.com/"
-            },
-            {
-                title: "KCET AI Chatbot",
-                desc: "An AI-powered admissions and information chatbot developed for Kamaraj College of Engineering & Technology (KCET). It helps students quickly access college information, including admissions, placements, infrastructure, contact details, and callback support through an interactive and user-friendly chat experience.",
-                tags: ["Python","Django","HTML5","CSS3","JavaScript","Responsive Design"], 
-                image: "assets/kcet_chatbot_preview.jpg",
-                github: "https://github.com/karthiktech2006/AI-Chatbot---Kamaraj-College-of-Engineering-and-Technology",
-                live: "https://kamarajengg.edu.in/",
             }
+           
+           
         ];
 
         const container = document.getElementById("projectsContainer");
