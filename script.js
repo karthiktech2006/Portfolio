@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         particlesJS("particles-js", {
             particles: {
                 number: { value: window.innerWidth < 768 ? 30 : 60 },
-                color: { value: ["#6366f1", "#06b6d4", "#a8e6cf"] },
+                color: { value: ["#8f9c8f", "#6b5850", "#ebdcd0"] },
                 shape: { type: "circle" },
                 opacity: { value: 0.25 },
                 size: { value: 3 },
