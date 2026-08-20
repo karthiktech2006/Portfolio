@@ -1,21 +1,20 @@
 // ========================================
 // KARTHIK PORTFOLIO - SMOOTH SCRIPTS
-// Optimized for Mobile/GPU • No Lag
+// Optimized for Mobile/GPU • Clean UX
 // ========================================
 
-// DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Particles (Lightweight config)
+    // 1. Particles (Lightweight config with brand colors)
     if (typeof particlesJS !== 'undefined') {
         particlesJS("particles-js", {
             particles: {
-                number: { value: window.innerWidth < 768 ? 40 : 60 },
-                color: { value: ["#ff6b9d","#4ecdc4","#a8e6cf"] },
+                number: { value: window.innerWidth < 768 ? 30 : 60 },
+                color: { value: ["#6366f1", "#06b6d4", "#a8e6cf"] },
                 shape: { type: "circle" },
-                opacity: { value: 0.4 },
+                opacity: { value: 0.25 },
                 size: { value: 3 },
-                move: { speed: 1 }
+                move: { speed: 1.2 }
             },
             interactivity: {
                 detect_on: "canvas",
@@ -30,60 +29,148 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 2. Typing Animation
     const roles = [
-        "Full Stack Developer",
-        "AI/ML Enthusiast",
-        "Flutter Developer", 
-        "Open Source Contributor"
+        "Full-Stack Developer",
+        "Python / Django Specialist",
+        "AI / ML Enthusiast",
+        "Flutter Mobile Developer"
     ];
     let i = 0, j = 0;
     const typingEl = document.getElementById('typing');
     
-    function typeWriter() {
-        if (j < roles[i].length) {
-            typingEl.textContent += roles[i][j++];
-            setTimeout(typeWriter, 100);
-        } else {
-            setTimeout(deleteWriter, 1500);
+    if (typingEl) {
+        function typeWriter() {
+            if (j < roles[i].length) {
+                typingEl.textContent += roles[i][j++];
+                setTimeout(typeWriter, 80);
+            } else {
+                setTimeout(deleteWriter, 2000);
+            }
         }
-    }
-    
-    function deleteWriter() {
-        if (j > 0) {
-            typingEl.textContent = roles[i].substring(0, j-1);
-            j--;
-            setTimeout(deleteWriter, 50);
-        } else {
-            i = (i + 1) % roles.length;
-            setTimeout(typeWriter, 500);
+        
+        function deleteWriter() {
+            if (j > 0) {
+                typingEl.textContent = roles[i].substring(0, j-1);
+                j--;
+                setTimeout(deleteWriter, 40);
+            } else {
+                i = (i + 1) % roles.length;
+                setTimeout(typeWriter, 400);
+            }
         }
+        typeWriter();
     }
-    typeWriter();
 
-    // 3. Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // 3. Smooth Scroll for Anchor Links & Sidebar Close on Mobile
+    document.querySelectorAll('a[href^="#"], .sidebar a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const href = this.getAttribute('href');
+            
+            // Only handle internal scrolling on current page
+            if (href.startsWith('#') || href.includes('index.html#')) {
+                const targetId = href.substring(href.indexOf('#'));
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    e.preventDefault();
+                    // Close sidebar if open on mobile
+                    const sidebar = document.querySelector('.sidebar');
+                    if (sidebar && sidebar.classList.contains('active')) {
+                        sidebar.classList.remove('active');
+                    }
+                    
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         });
     });
 
-    // 4. Form Submit
-    const form = document.querySelector('.contact-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form handler here
-            alert('Thank you! Message sent successfully 🚀');
-            form.reset();
+    // 4. Mobile Drawer Toggler (Hamburger)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.querySelector('.sidebar-overlay');
+
+    if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sidebar.classList.toggle('active');
+        });
+        
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+            });
+        }
+
+        // Close sidebar on document clicks outside
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
         });
     }
 
-    // 5. Skill Progress Animation (On Scroll)
+    // 5. Active Link Highlight on Scroll (Home Page only)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.sidebar a[href^="#"], .sidebar a[href^="index.html#"]');
+
+    if (sections.length > 0 && navLinks.length > 0) {
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const scrollPos = window.scrollY + 120; // offset for nav trigger
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                const cleanHref = href.substring(href.indexOf('#'));
+                if (cleanHref === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // 6. Contact Form Submission via EmailJS (Unified Handler - Fixes form reset race condition)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm && typeof emailjs !== 'undefined') {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Set loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `Sending... <i class="bi bi-hourglass-split"></i>`;
+            
+            emailjs.sendForm(
+                "service_zgpgruq",
+                "template_extkx18",
+                this
+            ).then(function() {
+                alert("Thank you! Message sent successfully ✅");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                contactForm.reset();
+            }, function(error) {
+                alert("Oops! Failed to send message. Please try again ❌");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                console.error("EmailJS Error:", error);
+            });
+        });
+    }
+
+    // 7. Skill Progress Animation (Visual Entry Effect)
     const observerOptions = {
-        threshold: 0.5,
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
     
@@ -92,77 +179,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 entry.target.style.transform = 'translateY(0)';
                 entry.target.style.opacity = '1';
+                observer.unobserve(entry.target); // animate once
             }
         });
     }, observerOptions);
 
-    // Observe skill cards and certs
-    document.querySelectorAll('.skill-card, .cert-card').forEach(el => {
-        el.style.transform = 'translateY(30px)';
+    document.querySelectorAll('.skill-card, .cert-card, .project-card').forEach(el => {
+        el.style.transform = 'translateY(25px)';
         el.style.opacity = '0';
-        el.style.transition = 'all 0.6s ease';
+        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
 
-    // 6. Mobile Sidebar Toggle
-    const sidebar = document.querySelector('.sidebar');
-    if (window.innerWidth <= 900) {
-        sidebar.style.width = '70px';
-    }
-    window.addEventListener('resize', function() {
-        if (window.innerWidth <= 900) {
-            sidebar.style.width = '70px';
-        } else {
-            sidebar.style.width = '90px';
-        }
-    });
-
 });
-
-
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm(
-        "service_zgpgruq",
-        "template_extkx18",
-        this
-    ).then(function() {
-        alert("Message sent successfully ✅");
-        document.getElementById("contact-form").reset();
-    }, function(error) {
-        alert("Failed to send message ❌");
-        console.error(error);
-    });
-});
-
-
-  // Disable right-click
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-   
-  });
-
-  // Disable key shortcuts
-  document.addEventListener('keydown', function (e) {
-
-    // F12
-    if (e.keyCode === 123) {
-      e.preventDefault();
-      return false;
-    }
-
-    // Ctrl + Shift + I / J / C
-    if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
-      e.preventDefault();
-      return false;
-    }
-
-    // Ctrl + U (view source)
-    if (e.ctrlKey && e.key.toUpperCase() === 'U') {
-      e.preventDefault();
-      return false;
-    }
-  });
-
-
